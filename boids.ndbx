@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx type="file" uuid="ab30c326-f24d-4fc6-ab69-49c47a3ca464">
+    <link href="clojure:src/nodebox/boids/core.clj" rel="functions"/>
+    <node name="root" prototype="core.network">
+        <node name="boids" position="1.00,1.00"/>
+    </node>
+</ndbx>
