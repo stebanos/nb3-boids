@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ndbx type="file" uuid="ab30c326-f24d-4fc6-ab69-49c47a3ca464">
     <link href="clojure:src/nodebox/boids/core.clj" rel="functions"/>
-    <node name="root" prototype="core.network">
-        <node name="boids" position="1.00,1.00"/>
+    <node name="root" prototype="core.network" renderedChild="boid_xyz">
+        <node description="Calculate the relative depth of a boid relative to its flock." function="nodebox-boids/get-boid-depth" name="boid_depth" position="4.00,2.00">
+            <port description="" label="" name="boid" range="value" type="" widget="none"/>
+            <port description="" label="" name="flock" range="value" type="" widget="none"/>
+        </node>
+        <node description="Get the angle (direction) of a boid." function="nodebox-boids/heading" name="boid_heading" position="7.00,2.00">
+            <port description="" label="" name="boid" range="value" type="" widget="none"/>
+        </node>
+        <node description="Get the xyz coordinates of a boid." function="nodebox-boids/get-boid-xyz" name="boid_xyz" position="1.00,2.00">
+            <port description="" label="" name="boid" range="value" type="" widget="none"/>
+        </node>
+        <node description="Create a flock of boids." function="nodebox-boids/make-flock" name="create_flock" outputType="data" position="1.00,0.00">
+            <port description="" label="" name="amount" range="value" type="int" value="30" widget="int"/>
+            <port description="" label="" name="x" range="value" type="float" value="-250.0" widget="float"/>
+            <port description="" label="" name="y" range="value" type="float" value="-250.0" widget="float"/>
+            <port description="" label="" name="width" range="value" type="float" value="500.0" widget="float"/>
+            <port description="" label="" name="height" range="value" type="float" value="500.0" widget="float"/>
+            <port description="" label="" name="depth" range="value" type="float" value="100.0" widget="float"/>
+        </node>
+        <node description="Get the boids within a flock." function="nodebox-boids/get-boids" name="flock_boids" outputRange="list" outputType="data" position="1.00,1.00">
+            <port description="" label="" name="flock" range="value" type="" widget="none"/>
+        </node>
+        <node description="Update a flock of boids." function="nodebox-boids/update-flock" name="update_flock" outputType="data" position="4.00,0.00">
+            <port description="" label="" name="flock" range="value" type="" widget="none"/>
+            <port description="" label="" name="separation" range="value" type="float" value="0.2" widget="float"/>
+            <port description="" label="" name="cohesion" range="value" type="float" value="0.2" widget="float"/>
+            <port description="" label="" name="alignment" range="value" type="float" value="0.6" widget="float"/>
+            <port description="" label="" name="target" range="value" type="float" value="0.2" widget="float"/>
+            <port description="" label="" name="limit" range="value" type="float" value="15.0" widget="float"/>
+            <port description="" label="" name="constrain" range="value" type="float" value="1.0" widget="float"/>
+        </node>
     </node>
 </ndbx>
